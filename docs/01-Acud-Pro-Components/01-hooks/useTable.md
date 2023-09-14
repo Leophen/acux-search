@@ -19,6 +19,21 @@ import TabItem from '@theme/TabItem';
   - 批量操作按钮
   - 表格单项操作
 
+## 功能说明
+
+<img className="bottom12 notShadow" src="https://cdn.staticaly.com/gh/Leophen/all_assets@main/making/image.4lc9ieq6vs00.png" width="1200" referrerPolicy="no-referrer" />
+
+- 列表数据请求相关：这些部分一般只是改变列表请求的参数然后进行再请求一次。
+- 列表操作相关：这些部分一般是触发新的交互页面（表单、跳转、对话框等），后续再触发跟列表请求无关的新的请求。
+
+:::note 与 useList 的区别
+
+- **更灵活的配置项**：useTable 比 useList 支持更多基础组件参数的传入
+- **更统一的配置项**：useTable 统一了 command 部分不同 actionType 下参数配置结构
+- **更精简的代码**：useTable 精简了代码文件结构（useList 由于 createBaseList 的原因，文件引用复杂）
+
+:::
+
 ## 引入
 
 ```js
@@ -691,28 +706,62 @@ function App(props) {
 
 Options 配置项：
 
-| 配置项          | 说明                                     | 类型                                            | 默认值                      |
-| --------------- | ---------------------------------------- | ----------------------------------------------- | --------------------------- |
-| title           | 页面标题                                 | `ReactNode`                                     | `--`                        |
-| className       | 列表类名                                 | `string`                                        | `--`                        |
-| fetchListAction | 请求的 action 名称或方法                 | `string〡Function`                              | `--`                        |
-| abort           | 是否禁止发这次请求                       | `boolean`                                       | `--`                        |
-| interval        | 轮询间隔（ms）                           | `number`                                        | `--`                        |
-| $onRequest      | 请求发出前钩子函数                       | `(payload: any) => any`                         | `--`                        |
-| $onResponse     | 请求返回成功后钩子函数                   | `(response: any, payload?: any) => any`         | `--`                        |
-| $onError        | 请求失败时钩子函数                       | `(error: any) => void`                          | `--`                        |
-| bulkConfig      | 操作区配置                               | [IBulkItemConfig](./useTable#ibulkitemconfig)[] | `--`                        |
-| bulkComp        | 自定义操作区组件                         | `React.ComponentType<any>`                      | `--`                        |
-| filterConfig    | 筛选区配置                               | [IFilterConfig](./useTable#ifilterconfig)       | `--`                        |
-| filterComp      | 自定义筛选区组件                         | `React.ComponentType<any>`                      | `--`                        |
-| rowKey          | 表格行 key 的取值                        | `string`                                        | `--`                        |
-| select          | 表格行是否可选择及可选类型（多选、单选） | `multi`〡`single`〡`none`                       | `--`                        |
-| pageSize        | 每页默认展示条数                         | `number`                                        | 10                          |
-| pageSizeOptions | 每页展示条数的可选值                     | `string[]`                                      | `['10', '20', '50', '100']` |
-| tableConfig     | 表格区域配置，同 acud Table              | `Table`                                         | `--`                        |
-| tableComp       | 自定义表格区域组件                       | `React.ComponentType<any>`                      | `--`                        |
-| card            | 表格区域以卡片组件的形式展示             | `React.ComponentType<any>`                      | `--`                        |
-| commands        | 操作相关配置                             | `ICommand`                                      | `--`                        |
+| 配置项          | 说明                                     | 类型                                                                 | 默认值                      |
+| --------------- | ---------------------------------------- | -------------------------------------------------------------------- | --------------------------- |
+| title           | 页面标题                                 | `ReactNode`                                                          | `--`                        |
+| className       | 列表类名                                 | `string`                                                             | `--`                        |
+| fetchListAction | 请求的 action 名称或方法                 | `string〡Function`                                                   | `--`                        |
+| abort           | 是否禁止发这次请求                       | `boolean`                                                            | `--`                        |
+| interval        | 轮询间隔（ms）                           | `number`                                                             | `--`                        |
+| $onRequest      | 请求发出前钩子函数                       | `(payload: any) => any`                                              | `--`                        |
+| $onResponse     | 请求返回成功后钩子函数                   | `(response: any, payload?: any) => any`                              | `--`                        |
+| $onError        | 请求失败时钩子函数                       | `(error: any) => void`                                               | `--`                        |
+| bulkConfig      | 操作区配置                               | [IBulkItemConfig](./useTable#ibulkitemconfig)[]                      | `--`                        |
+| bulkComp        | 自定义操作区组件                         | `React.ComponentType<any>`                                           | `--`                        |
+| filterConfig    | 筛选区配置                               | [IFilterConfig](./useTable#ifilterconfig)                            | `--`                        |
+| filterComp      | 自定义筛选区组件                         | `React.ComponentType<any>`                                           | `--`                        |
+| rowKey          | 表格行 key 的取值                        | `string`                                                             | `--`                        |
+| select          | 表格行是否可选择及可选类型（多选、单选） | `multi`〡`single`〡`none`                                            | `--`                        |
+| pageSize        | 每页默认展示条数                         | `number`                                                             | `10`                        |
+| pageSizeOptions | 每页展示条数的可选值                     | `string[]`                                                           | `['10', '20', '50', '100']` |
+| tableConfig     | 表格区域配置，同 acud Table              | [Table](../../Acud/%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA/Table#table) | `--`                        |
+| tableComp       | 自定义表格区域组件                       | `React.ComponentType<any>`                                           | `--`                        |
+| card            | 表格区域以卡片组件的形式展示             | `React.ComponentType<any>`                                           | `--`                        |
+| commands        | 操作相关配置                             | `ICommand`                                                           | `--`                        |
+
+```ts title='ICommand 类型'
+export interface ICommand {
+    [actionName: string]: {
+        actionType?: 'link' | 'ajax' | 'dialog' | 'drawer' | 'custom';
+        link?: string; // actionType === 'link' 时的链接
+        ajax?: IAjaxOption; // // actionType === 'ajax' 时的额外配置
+        dialog?: IDialogOption; // actionType === 'dialog' 时的dialog配置
+        drawer?: IDrawerOption; // actionType === 'dialog' 时的drawer配置
+        action?: string; // actionType === 'custom' 的用户自定义方法名
+        $payloadFields?: any[];
+        $extraPayload?: object
+    }
+}
+```
+
+```ts title='link 说明'
+// actionType === 'link'
+{
+    // id: 'create', // bulkConfig 中配置
+    // text: '创建项目' // bulkConfig 中配置
+    actionType: 'link',
+    link: '/project/create',
+    // $payloadFields: ['id'], // commands 中配置
+    // handleTableCommand 调用时从传入的 payload 中根据指定的 $payloadFields 提取对应字段的值
+    $extraPayload: {
+        payload1: '123',
+        payload2: '234'
+    }
+}
+
+// 最终跳转地址：'/project/create[/${id}]/123/234'
+// 与直接指定link 为 '/project/create[/${id}]/123/234' 效果一致
+```
 
 ### IBulkItemConfig
 
@@ -743,9 +792,196 @@ Options 配置项：
 
 ### IAjaxOption
 
+```js title='actionType === ajax'
+// actionType === 'ajax'
+{
+    // id: 'delete', // bulkConfig 中配置
+    // text: '删除', // bulkConfig 中配置
+    // select: true, // bulkConfig 中配置，表格行至少勾选一项后，按钮才可点击，不然为disabled状态
+    actionType: 'ajax',
+    ajax: {
+        apiAction: 'deleteProject',
+        confirmTitle: '确认删除提示', // 可以是形如"名称（<%= name %>）"这样的模版字符串
+        confirmText: '确定要删除所选的告警渠道吗？删除后不能恢复！',
+        $toastMessage: '删除成功',
+        // $payloadFields: ['id'] // commands中配置
+        $extraPayload: {},
+        $onRequest(payload) {
+            // bulkConfig 中批量处理时可能需要
+            // payload.ids = payload.selectedRowKeys;
+            // delete payload.selectedRowKeys;
+            // delete payload.selectedItems;
+        },
+        $onResponse(response, payload) {},
+        $onError(error, payload) {}
+    },
+    $extraPayload: {}
+}
+```
+
 ### IDialogOption
 
+```mdx-code-block
+<Tabs>
+<TabItem value="弹框类型为 alert">
+```
+
+```js
+// actionType === 'dialog' && 弹框类型为'alert'
+// 展示形式为 DialogBox，默认为通知形式
+{
+    // id: 'create', // bulkConfig 中配置
+    // text: '创建项目', // bulkConfig 中配置
+    // skin: 'primary', // bulkConfig 中配置
+    // icon: <OutlinedPlus />, // bulkConfig 中配置
+    actionType: 'dialog',
+    dialog: {
+        title: '创建项目',
+        body: {
+            type: 'alert',
+            content: CreateProject,
+            $extraPayload: {},
+            $onBeforeOpen(payload) {}
+        },
+        // foot: true,
+        // cancelWithSuccess: false,
+        // confirmLoadingText: '提交中…'
+    }
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="弹框类型为 plain">
+```
+
+```js
+// actionType === 'dialog' && 弹框类型为 'plain'
+// 展示形式为 Modal，对话框底部默认只有「确定」按钮，无「取消」按钮
+{
+    // id: 'create', // bulkConfig 中配置
+    // text: '创建项目', // bulkConfig 中配置
+    // skin: 'primary', // bulkConfig 中配置
+    // icon: <OutlinedPlus />, // bulkConfig 中配置
+    actionType: 'dialog',
+    dialog: {
+        title: '创建项目',
+        body: {
+            type: 'plain',
+            content: CreateProject,
+            // $payloadFields: ['id', ['name', 'projectName']] // commands 中配置
+            // 可以通过数组的形式将 name 参数重命名为 projectName
+            $extraPayload: {},
+            $onBeforeOpen(payload) {}
+        },
+        // foot: true,
+        // cancelWithSuccess: false,
+        // confirmLoadingText: '提交中…'
+    }
+}
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="弹框类型为 common">
+```
+
+```js
+// actionType === 'dialog' && 弹框类型为 'common'
+// 展示形式为 Modal，对话框底部默认有「确定」和「取消」按钮
+{
+    // id: 'create', // bulkConfig 中配置
+    // text: '创建项目', // bulkConfig 中配置
+    // skin: 'primary', // bulkConfig 中配置
+    // icon: <OutlinedPlus />, // bulkConfig 中配置
+    actionType: 'dialog',
+    dialog: {
+        title: '创建项目',
+        body: {
+            type: 'common',
+            content: CreateProject,
+            // $payloadFields: ['id', ['name', 'projectName']] // commands 中配置
+            $extraPayload: {},
+            $onBeforeOpen(payload) {}
+        },
+        // foot: true,
+        // cancelWithSuccess: false,
+        // confirmLoadingText: '提交中…'
+    }
+}
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+| 配置项             | 说明                          | 类型                | 默认值    |
+| ------------------ | ----------------------------- | ------------------- |
+| title              | 对话框的标题                  | `string`            | `--`      |
+| body               | 对话框主体配置                | `IDialogBodyOption` | `确认`    |
+| foot               | 对话框是否需要底部            | `boolean`           | `--`      |
+| cancelWithSuccess  | 取消时是否执行 onSuccess 方法 | `boolean`           | `--`      |
+| confirmLoadingText | 请求发起中按钮的文案          | `ReactNode`         | `提交中…` |
+
+- type 为 `alert` 时，其他对话框配置项 同 acud DialogBox API
+- type 为 `plain` 或者 `common` 时，其他对话框配置项 同 acud Modal API
+
+```ts
+export interface IDialogBodyOption {
+    type: 'alert' | 'plain' | 'common'; // 弹框的类型
+    content?: React.ReactNode; // 弹框的内容
+    // $payloadFields?: string[]; // 指定传入参数的字段名
+    $extraPayload?: any; // 额外的参数
+    // 与 useList 不同，这里废弃 $onBeforeDialogOpen，改为 $onBeforeOpen
+    $onBeforeOpen?: (payload: any) => any; // 对话框打开之前的钩子函数
+}
+```
+
 ### IDrawerOption
+
+```js
+// actionType === 'drawer'
+// 展示形式为 Drawer，抽屉底部默认有「确定」和「取消」按钮
+{
+    // id: 'create', // bulkConfig 中配置
+    // text: '创建项目', // bulkConfig 中配置
+    // skin: 'primary', // bulkConfig 中配置
+    // icon: <OutlinedPlus />, // bulkConfig 中配置
+    actionType: 'drawer',
+    drawer: {
+        title: '创建项目',
+        body: {
+            content: CreateProject,
+            // $payloadFields: ['id', ['name', 'projectName']] // commands 中配置。
+            $extraPayload: {},
+            $onBeforeOpen(payload) {}
+        },
+        // foot: true,
+        // cancelWithSuccess: false,
+        // confirmLoadingText: '提交中…'
+    }
+}
+```
+
+| 配置项             | 说明                          | 类型                | 默认值    |
+| ------------------ | ----------------------------- | ------------------- | --------- |
+| title              | 对话框的标题                  | `ReactNode`         | `--`      |
+| body               | 对话框主体配置                | `IDrawerBodyOption` | `确认`    |
+| foot               | 对话框是否需要底部            | `boolean`           | `--`      |
+| cancelWithSuccess  | 取消时是否执行 onSuccess 方法 | `boolean`           | `--`      |
+| confirmLoadingText | 请求发起中按钮的文案          | `ReactNode`         | `提交中…` |
+
+- 其他对话框配置项 同 acud Drawer API
+
+```ts
+export interface IDrawerBodyOption {
+    content?: React.ReactNode; // 抽屉的内容
+    // $payloadFields?: any[];
+    $extraPayload?: object; // 额外的参数
+    $onBeforeOpen?: (payload: any) => any; // 抽屉打开之前的钩子函数
+}
+```
 
 ### IFilterConfig
 
@@ -778,4 +1014,30 @@ export interface IFilterControl extends IBulkItemConfig {
      */
     controlProps?: any;
 }
+```
+
+### HooksTable
+
+```jsx
+<HooksTable {...useTableProps} />
+```
+
+HooksTable 除了接收 `useTable` 调用后的参数，还有接收参数：
+
+| 参数名       | 说明                          | 类型                                     | 默认值 |
+| ------------ | ----------------------------- | ---------------------------------------- | ------ |
+| customRender | 可用于自定义 title 和 toolbar | `{title: ReactNode, toolbar: ReactNode}` | `--`   |
+
+```jsx
+const customRender = {
+    title: <div>业务端 title</div>,
+    toolbar: <div>业务端 toolbar</div>
+};
+
+return (
+    <HooksTable
+        {...useTableProps}
+        customRender={customRender}
+     />
+);
 ```

@@ -11,7 +11,7 @@ ACUD 图标库是语义化的矢量图形。
 
 ## 安装
 
-使用图标组件，需要安装 `acud-icon`：
+使用图标组件需安装 `acud-icon`：
 
 <Tabs>
 <TabItem value="npm">
@@ -40,7 +40,7 @@ import {OutlinedLeft} from 'acud-icon';
 
 直接使用引入的 ACUD 图标。
 
-```jsx live
+```jsx live fff
 function App() {
     return (
         <div className="acux-demo-row">
@@ -57,7 +57,7 @@ function App() {
 
 提供 `width` 属性可自定义图标大小。
 
-```jsx live
+```jsx live fff
 function App() {
     return (
         <div className="acux-demo-row">
@@ -85,11 +85,26 @@ function App() {
 }
 ```
 
+通过 `color` 属性可自定义多色图标的颜色。
+
+```jsx live
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <MultiToneAcgLogo width={30} />
+            <MultiToneAcgLogo width={30} color="#8A88FF,#5fcf6f,#ff82d5"/>
+            <MultiToneMusic width={30} />
+            <MultiToneMusic width={30} color="#0362ff" />
+        </div>
+    );
+}
+```
+
 ## 图标旋转
 
 通过 `rotate` 属性可对图标进行旋转。
 
-```jsx live
+```jsx live fff
 function App() {
     return (
         <div className="acux-demo-row">
