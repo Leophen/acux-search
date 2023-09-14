@@ -1,0 +1,266 @@
+---
+title: Icon 图标
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import IconDisplay from '../../../src/components/IconDisplay/index.tsx'
+import IconSearch from '../../../src/components/IconSearch/index.tsx'
+
+ACUD 图标库是语义化的矢量图形。
+
+## 安装
+
+使用图标组件，需要安装 `acud-icon`：
+
+<Tabs>
+<TabItem value="npm">
+
+```bash
+npm install --save acud-icon
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add acud-icon -D
+```
+
+</TabItem>
+</Tabs>
+
+## 引入
+
+```js
+import {OutlinedLeft} from 'acud-icon';
+```
+
+## 基本用法
+
+直接使用引入的 ACUD 图标。
+
+```jsx live
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <OutlinedLeft />
+            <OutlinedUp />
+            <OutlinedRight />
+            <OutlinedDown />
+        </div>
+    );
+}
+```
+
+## 图标大小
+
+提供 `width` 属性可自定义图标大小。
+
+```jsx live
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <FilledStar width={16} />
+            <FilledStar width={24} />
+            <FilledStar width={32} />
+        </div>
+    );
+}
+```
+
+## 图标颜色
+
+通过 `fill` 属性可自定义单色图标的颜色。
+
+```jsx live
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <OutlinedCheckCircle width={24} fill='#8A88FF' />
+            <OutlinedCheckCircle width={24} fill='rgb(95, 207, 111)' />
+            <OutlinedCheckCircle width={24} fill='hsl(211, 100%, 61%)' />
+        </div>
+    );
+}
+```
+
+## 图标旋转
+
+通过 `rotate` 属性可对图标进行旋转。
+
+```jsx live
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <OutlinedRightArrow width={24} />
+            <OutlinedRightArrow width={24} rotate={30} />
+            <OutlinedRightArrow width={24} rotate={90} />
+            <OutlinedRightArrow width={24} rotate={180} />
+        </div>
+    );
+}
+```
+
+## 全部图标
+
+左键复制图标名，右键复制图标代码，也可点击下方按钮通过图片快速搜索图标。
+
+<IconSearch />
+
+### 线框-通用类图标
+
+<IconDisplay type="线框-通用类图标" />
+
+### 线框-方向类图标
+
+<IconDisplay type="线框-方向类图标" />
+
+### 线框-提示类图标
+
+<IconDisplay type="线框-提示类图标" />
+
+### 线框-操作类图标
+
+<IconDisplay type="线框-操作类图标" />
+
+### 线框-数据类图标
+
+<IconDisplay type="线框-数据类图标" />
+
+### 线框-文件类图标
+
+<IconDisplay type="线框-文件类图标" />
+
+### 多色-通用类图标
+
+<IconDisplay type="多色-通用类图标" />
+
+### 多色-提示类图标
+
+<IconDisplay type="多色-提示类图标" />
+
+### 面性图标
+
+<IconDisplay type="面性图标" />
+
+### BCE-线框类图标
+
+<IconDisplay type="BCE-线框类图标" />
+
+### BCE-实底类图标
+
+<IconDisplay type="BCE-实底类图标" />
+
+## API
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| width | 图标宽度 | `number`〡`string` | `1em` |
+| height | 图标高度，通常情况下只设置`width`即可 | `number` \| `string` | `--` |
+| className | 设置图标的样式名 | `string` | `--` |
+| style | 设置图标样式 | `CSSProperties` | `--` |
+| rotate | 设置图标旋转角度 | `number` | `--` |
+| animation | 设置图标的动画 | `spin` \| `heartbeat` | `--` |
+| fill | 设置 svg 标签的 fill 属性，用于更改 svg 的颜色 | `string` | `currentColor` |
+| color | 设置 svg 内层标签的 fill 属性（仅多色图标支持，规则 ▼） | `string` | `--` |
+
+<br/>
+
+:::note color 属性覆盖规则说明
+
+根据多色图标的绘制路径颜色出现顺序及重复性计算`颜色层级`，再利用 `color` 属性传入的颜色进行覆盖。
+
+例如，多色图标中的颜色有 4 个：#0362ff、#ff512e、#0362ff、#00d262，`color` 属性值为 "#ffeb3b,#673ab7,#ff9800"
+
+那么计算出`颜色层级`为：
+
+* 第一级颜色：#0362ff （该颜色取 `color` 属性中第一个颜色值进行覆盖，如果没有则保持原来的颜色）
+* 第二级颜色：#ff512e （该颜色取 `color` 属性中第二个颜色值进行覆盖，如果没有则保持原来的颜色）
+* 第三级颜色：#00d262 （该颜色取 `color` 属性中第三个颜色值进行覆盖，如果没有则保持原来的颜色）
+
+替换后多色图标中颜色为：#ffeb3b、#673ab7、#ffeb3b、#ff9800
+
+:::
+
+## 自定义 SVG 图标
+
+除了支持上述通用图标的属性（`color` 除外）,还支持以下属性：
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| component | 控制如何渲染图标，通常是一个渲染根标签为`<svg>`的 React 组件 | `ReactNode` | `--` |
+
+
+## 自定义 font 图标
+
+通过 `createFromIconfontCN` 方法可以从 (iconfont.cn)[https://www.iconfont.cn/] 上自行引入图标。
+
+`createFromIconfontCN` 方法的参数包括：
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| scriptUrl | iconfont.cn 上项目在线生成的 js 地址 | `string` \| `string[]` | `--` |
+| extraCommonProps | 给所有 svg 图标 设置额外通用的属性 | `{[key: string] : any}` | `--` |
+
+调用 `createFromIconfontCN` 方法后生成的组件，在使用时，除了支持上述通用图标的属性（`color` 除外）,还支持以下属性：
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| type | symbol 的 id 名，其本质是利用 `<use>` 标签来指定渲染的图标 | `string` | `--` |
+
+
+
+## PICK 图标库
+
+PICK 是聚合了图标、插画等设计资源的平台，提供不同业务方向图标和通用图标库，方便设计/前端自由调用官方图标库，提供矢量格式、多配色图标库，助力项目协同高效合作。
+
+开发者可以从 [PICK 图标库](http://sandbox.bce.console.baidu-int.com/icon/#/index) 中自行引入图标。
+
+### PICK 图标库安装
+
+<Tabs>
+<TabItem value="npm">
+
+```bash
+npm install --save @baidu/xicon-react
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+```bash
+yarn add @baidu/xicon-react -D
+```
+
+</TabItem>
+</Tabs>
+
+### PICK 图标库用法
+
+引入：
+
+```js
+import Icon from 'acud-icon';
+import {BatteryDead1, BatteryCharging1, BatteryUsage1} from '@baidu/xicon-react';
+```
+
+示例：
+
+```jsx
+function App() {
+    return (
+        <div className="acux-demo-row">
+            <Icon xicon={<BatteryDead1 theme="line" size={30} strokeLinejoin="round" />} />
+            <Icon xicon={<BatteryUsage1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
+            <Icon xicon={<BatteryCharging1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
+        </div>
+    );
+}
+```
+
+### PICK 图标库 API
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| xicon | 在 @baidu/xicon-react 库中引入的图标组件 | `ReactNode` | `--` |

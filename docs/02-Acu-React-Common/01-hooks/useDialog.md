@@ -16,7 +16,7 @@ const { useDialog } = hooks;
 
 对话框可通过将 `Dialog`、`dialogOpen`、`setDialogOptions`、`handleDialogCancel` 解构出来使用，其中对话框内容组件支持点击确认按钮调用内部的 `doSubmit` 方法。$$
 
-```jsx live
+```jsx live fff
 function App() {
     const { Dialog, dialogOpen, setDialogOptions, handleDialogCancel } = useDialog();
 
@@ -72,7 +72,7 @@ function App() {
 
 抽屉使用方法与对话框同理，区别在于 `setDialogOptions` 的参数中控制 `type` 字段为 `drawer`。
 
-```jsx live
+```jsx live fff
 function App() {
     const { Dialog, dialogOpen, setDialogOptions, handleDialogCancel } = useDialog();
 
@@ -129,7 +129,7 @@ function App() {
 
 `DialogOptions` 的 `wrappedComponent` 一般为 `<HooksForm />` 组件，使用如下：
 
-```jsx live
+```jsx live fff
 function App() {
     return (
         <>
