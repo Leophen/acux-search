@@ -2,14 +2,12 @@
 title: useDialog
 ---
 
-触发对话框或抽屉组件的 hooks
+用于打开弹框和抽屉的 hooks。
 
 ## 引入
 
 ```js
-import { hooks } from 'baidu-acu-react-common';
-
-const { useDialog } = hooks;
+import {useDialog} from '@baidu/acud-pro-components';
 ```
 
 ## 触发对话框
@@ -157,7 +155,7 @@ interface UseDialogType {
 
 | 属性              | 说明                                       | 类型                                | 默认值   |
 | ----------------- | ------------------------------------------ | ----------------------------------- | -------- |
-| antdProps         | Antd 属性传入（可选）                      | `Object`                            | `--`     |
+| acudProps         | Acud 属性传入（可选）                      | `Object`                            | `--`     |
 | cancelText        | 取消文本（可选）                           | `string`                            | `取消`   |
 | cancelWithSuccess | 设置可以支持关闭弹框，同时刷新页面（可选） | `boolean`                           | `false`  |
 | className         | 弹窗类名（可选）                           | `string`                            | `--`     |

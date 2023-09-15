@@ -41,16 +41,12 @@ import {OutlinedLeft} from 'acud-icon';
 直接使用引入的 ACUD 图标。
 
 ```jsx live fff
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <OutlinedLeft />
-            <OutlinedUp />
-            <OutlinedRight />
-            <OutlinedDown />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <OutlinedLeft />
+    <OutlinedUp />
+    <OutlinedRight />
+    <OutlinedDown />
+</div>
 ```
 
 ## 图标大小
@@ -58,15 +54,11 @@ function App() {
 提供 `width` 属性可自定义图标大小。
 
 ```jsx live fff
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <FilledStar width={16} />
-            <FilledStar width={24} />
-            <FilledStar width={32} />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <FilledStar width={16} />
+    <FilledStar width={24} />
+    <FilledStar width={32} />
+</div>
 ```
 
 ## 图标颜色
@@ -74,30 +66,22 @@ function App() {
 通过 `fill` 属性可自定义单色图标的颜色。
 
 ```jsx live
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <OutlinedCheckCircle width={24} fill='#8A88FF' />
-            <OutlinedCheckCircle width={24} fill='rgb(95, 207, 111)' />
-            <OutlinedCheckCircle width={24} fill='hsl(211, 100%, 61%)' />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <OutlinedCheckCircle width={24} fill='#8A88FF' />
+    <OutlinedCheckCircle width={24} fill='rgb(95, 207, 111)' />
+    <OutlinedCheckCircle width={24} fill='hsl(211, 100%, 61%)' />
+</div>
 ```
 
 通过 `color` 属性可自定义多色图标的颜色。
 
 ```jsx live
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <MultiToneAcgLogo width={30} />
-            <MultiToneAcgLogo width={30} color="#8A88FF,#5fcf6f,#ff82d5"/>
-            <MultiToneMusic width={30} />
-            <MultiToneMusic width={30} color="#0362ff" />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <MultiToneAcgLogo width={30} />
+    <MultiToneAcgLogo width={30} color="#8A88FF,#5fcf6f,#ff82d5"/>
+    <MultiToneMusic width={30} />
+    <MultiToneMusic width={30} color="#0362ff" />
+</div>
 ```
 
 ## 图标旋转
@@ -105,16 +89,12 @@ function App() {
 通过 `rotate` 属性可对图标进行旋转。
 
 ```jsx live fff
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <OutlinedRightArrow width={24} />
-            <OutlinedRightArrow width={24} rotate={30} />
-            <OutlinedRightArrow width={24} rotate={90} />
-            <OutlinedRightArrow width={24} rotate={180} />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <OutlinedRightArrow width={24} />
+    <OutlinedRightArrow width={24} rotate={30} />
+    <OutlinedRightArrow width={24} rotate={90} />
+    <OutlinedRightArrow width={24} rotate={180} />
+</div>
 ```
 
 ## 全部图标
@@ -263,15 +243,11 @@ import {BatteryDead1, BatteryCharging1, BatteryUsage1} from '@baidu/xicon-react'
 示例：
 
 ```jsx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Icon xicon={<BatteryDead1 theme="line" size={30} strokeLinejoin="round" />} />
-            <Icon xicon={<BatteryUsage1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
-            <Icon xicon={<BatteryCharging1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Icon xicon={<BatteryDead1 theme="line" size={30} strokeLinejoin="round" />} />
+    <Icon xicon={<BatteryUsage1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
+    <Icon xicon={<BatteryCharging1 hideTitle theme="line" size={30} strokeLinejoin="round" />} />
+</div>
 ```
 
 ### PICK 图标库 API

@@ -21,17 +21,13 @@ import {Button} from 'acud';
 - 强调按钮：当⽤用户需要进⾏⼀些特别重要，执⾏错误后会造成重⼤损失的命令，可使⽤强调按钮，如危险删除。
 
 ```jsx live fffx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Button>default</Button>
-            <Button type="primary">primary</Button>
-            <Button type="enhance">enhance</Button>
-            <Button type="highlight">highlight</Button>
-            <Button type="text">文字按钮</Button>
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Button>default</Button>
+    <Button type="primary">primary</Button>
+    <Button type="enhance">enhance</Button>
+    <Button type="highlight">highlight</Button>
+    <Button type="text">文字按钮</Button>
+</div>
 ```
 
 ## 禁用状态
@@ -39,17 +35,13 @@ function App() {
 可以使用 `disabled` 属性来定义按钮是否被禁用，该属性接受一个 `Boolean` 类型的值。
 
 ```jsx live fffx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Button disabled>default</Button>
-            <Button type="primary" disabled>primary</Button>
-            <Button type="enhance" disabled>enhance</Button>
-            <Button type="highlight" disabled>highlight</Button>
-            <Button type="text" disabled>文字按钮</Button>
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Button disabled>default</Button>
+    <Button type="primary" disabled>primary</Button>
+    <Button type="enhance" disabled>enhance</Button>
+    <Button type="highlight" disabled>highlight</Button>
+    <Button type="text" disabled>文字按钮</Button>
+</div>
 ```
 
 ## 加载状态
@@ -57,17 +49,13 @@ function App() {
 `loading`: 加载中，该属性接受一个 `Boolean` 类型的值。
 
 ```jsx live fffx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Button loading>default</Button>
-            <Button type="primary" loading>primary</Button>
-            <Button type="enhance" loading>enhance</Button>
-            <Button type="highlight" loading>highlight</Button>
-            <Button type="text" loading>文字按钮</Button>
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Button loading>default</Button>
+    <Button type="primary" loading>primary</Button>
+    <Button type="enhance" loading>enhance</Button>
+    <Button type="highlight" loading>highlight</Button>
+    <Button type="text" loading>文字按钮</Button>
+</div>
 ```
 
 ## 不同尺寸
@@ -75,15 +63,11 @@ function App() {
 提供 `small`、`middle`（默认）、`large` 三种尺寸的按钮。
 
 ```jsx live fffx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Button size="small">小按钮</Button>
-            <Button size="middle">中按钮</Button>
-            <Button size="large">大按钮</Button>
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Button size="small">小按钮</Button>
+    <Button size="middle">中按钮</Button>
+    <Button size="large">大按钮</Button>
+</div>
 ```
 
 ## 带图标按钮
@@ -91,17 +75,13 @@ function App() {
 可以使用 `icon` 属性来添加按钮图标。
 
 ```jsx live fffx
-function App() {
-    return (
-        <div className="acux-demo-row">
-            <Button icon={<OutlinedPlus />}>default</Button>
-            <Button type="primary" icon={<OutlinedPlus />}>primary</Button>
-            <Button type="enhance" icon={<OutlinedPlus />}>enhance</Button>
-            <Button type="highlight" icon={<OutlinedPlus />}>highlight</Button>
-            <Button type="text" icon={<OutlinedPlus />}>文字按钮</Button>
-        </div>
-    );
-}
+<div className="acux-demo-row">
+    <Button icon={<OutlinedPlus />}>default</Button>
+    <Button type="primary" icon={<OutlinedPlus />}>primary</Button>
+    <Button type="enhance" icon={<OutlinedPlus />}>enhance</Button>
+    <Button type="highlight" icon={<OutlinedPlus />}>highlight</Button>
+    <Button type="text" icon={<OutlinedPlus />}>文字按钮</Button>
+</div>
 ```
 
 ## 按钮组
