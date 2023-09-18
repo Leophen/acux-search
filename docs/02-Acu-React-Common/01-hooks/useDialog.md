@@ -171,3 +171,7 @@ interface UseDialogType {
 | title             | 弹窗标题（可选）                           | `string`                            | `--`     |
 | width             | 弹窗高度（可选）                           | `number`                            | `378`    |
 | wrappedComponent  | 弹窗内容组件                               | `ReactNode`                         | `--`     |
+
+## 参考文档
+
+<https://react-app-common.now.baidu-int.com/#/hooks/UseDialog>
