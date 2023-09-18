@@ -21,16 +21,16 @@ import TabItem from '@theme/TabItem';
 
 ## 功能说明
 
-<img className="bottom12 notShadow" src="https://cdn.staticaly.com/gh/Leophen/all_assets@main/making/image.4lc9ieq6vs00.png" width="1200" referrerPolicy="no-referrer" />
+<img className="bottom12 notShadow" src="http://bj.bcebos.com/ibox-thumbnail98/3bd6886a986ec0e9d3d7562a35722c78" width="1200" referrerPolicy="no-referrer" />
 
 - 列表数据请求相关：这些部分一般只是改变列表请求的参数然后进行再请求一次。
 - 列表操作相关：这些部分一般是触发新的交互页面（表单、跳转、对话框等），后续再触发跟列表请求无关的新的请求。
 
-:::note 与 useList 的区别
+:::note 与 [useList](./useList) 的区别
 
-- **更灵活的配置项**：useTable 比 useList 支持更多基础组件参数的传入
+- **更灵活的配置项**：useTable 比 [useList](./useList) 支持更多基础组件参数的传入
 - **更统一的配置项**：useTable 统一了 command 部分不同 actionType 下参数配置结构
-- **更精简的代码**：useTable 精简了代码文件结构（useList 由于 createBaseList 的原因，文件引用复杂）
+- **更精简的代码**：useTable 精简了代码文件结构（[useList](./useList) 由于 createBaseList 的原因，文件引用复杂）
 
 :::
 
